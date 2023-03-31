@@ -18,6 +18,10 @@ while True:
             file.close()
 
         case "Show" | "Display":
+            file = open('tasks.txt', 'r')
+            tasks = file.readlines()
+            file.close()
+
             for index, item in enumerate(tasks):
                 row = f"{index + 1}-{item}"
                 print(row)
