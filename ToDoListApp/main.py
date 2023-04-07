@@ -23,8 +23,10 @@ while True:
             file.close()
 
             for index, item in enumerate(tasks):
+                item = item.strip('\n')
                 row = f"{index + 1}-{item}"
                 print(row)
+
         case 'Edit':
             number = int(input("Number of Task to Edit"))
             number = number - 1
