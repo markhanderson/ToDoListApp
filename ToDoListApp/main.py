@@ -7,20 +7,23 @@ while True:
         case 'Add':
             task = input("Enter a Task: ") + "\n"
 
-            file = open('tasks.txt', 'r')
-            tasks = file.readlines()
-            file.close()
+            with open('tasks.txt', 'r') as file:
+                tasks = file.readlines()
 
             tasks.append(task)
+
+            with open('tasks.txt', 'w') as file:
+                file.writelines(tasks)
 
             file = open('tasks.txt', 'w')
             file.writelines(tasks)
             file.close()
 
-        case "Show" | "Display":
-            file = open('tasks.txt', 'r')
-            tasks = file.readlines()
-            file.close()
+        case 'Show':
+
+            with open('tasks.txt', 'r') as file:
+                tasks = file.readlines()
+
 
             for index, item in enumerate(tasks):
                 item = item.strip('\n')
@@ -30,11 +33,34 @@ while True:
         case 'Edit':
             number = int(input("Number of Task to Edit"))
             number = number - 1
+
+            with open('tasks.txt', 'r') as file:
+                tasks = file.readlines()
+            print('Here are the existing tasks', tasks)
+
+
+
             new_task = input("Enter New Task: ")
-            tasks[number] = new_task
+            tasks[number] = new_task + '\n'
+
+            with open('tasks.txt', 'w') as file:
+                file.writelines(tasks)
+
         case 'Complete':
             number = int(input("Number of Task to Complete"))
+
+            with open('tasks.txt', 'r') as file:
+                tasks = file.readlines()
+            index = number - 1
+            tasks_to_remove = tasks[index].strip('\n')
             tasks.pop(number - 1)
+
+            with open('tasks.txt', 'w') as file:
+                file.writelines(tasks)
+
+            message = f'task {tasks_to_remove} was removed from the list.'
+            print(message)
+
         case 'Exit':
             print("You Entered a Unknown Command, Please Try Again.")
             break
