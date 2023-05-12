@@ -3,7 +3,7 @@ while True:
     user_action = input("Type Add, Show, Edit, Complete or Exit: ")
     user_action = user_action.strip()
 
-    if 'Add' in user_action:
+    if 'Add' in user_action or 'New' in user_action:
         task = user_action[4:]
 
         with open('tasks.txt', 'r') as file:
