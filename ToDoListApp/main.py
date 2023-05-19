@@ -14,10 +14,6 @@ while True:
         with open('tasks.txt', 'w') as file:
             file.writelines(tasks)
 
-        # file = open('tasks.txt', 'w')
-        # file.writelines(tasks)
-        # file.close()
-
     elif 'Show' in user_action:
         with open('tasks.txt', 'r') as file:
             tasks = file.readlines()
