@@ -1,4 +1,10 @@
 
+def get_tasks():
+    with open('tasks.txt', 'r') as file_local:
+        tasks_local = file_local.readlines()
+    return tasks_local
+
+
 while True:
     user_action = input("Type Add, Show, Edit, Complete or Exit: ")
     user_action = user_action.strip()
@@ -6,8 +12,7 @@ while True:
     if user_action.startswith("Add"):
         task = user_action[4:]
 
-        with open('tasks.txt', 'r') as file:
-            tasks = file.readlines()
+        tasks = get_tasks()
 
         tasks.append(task + '\n')
 
@@ -15,9 +20,8 @@ while True:
             file.writelines(tasks)
 
     elif user_action.startswith('Show'):
-        with open('tasks.txt', 'r') as file:
-            tasks = file.readlines()
 
+        tasks = get_tasks()
 
         for index, item in enumerate(tasks):
             item = item.strip('\n')
@@ -29,8 +33,7 @@ while True:
             number = int(user_action[5:])
             number = number - 1
 
-            with open('tasks.txt', 'r') as file:
-                    tasks = file.readlines()
+            tasks = get_tasks()
 
             new_task = input("Enter New Task: ")
             tasks[number] = new_task + '\n'
@@ -45,8 +48,8 @@ while True:
         try:
             number = int(user_action[9:])
 
-            with open('tasks.txt', 'r') as file:
-                tasks = file.readlines()
+            tasks = get_tasks()
+
             index = number - 1
             tasks_to_remove = tasks[index].strip('\n')
             tasks.pop(number - 1)
