@@ -1,6 +1,10 @@
 # from functions import get_tasks, write_tasksimport functions
 # from modules import functions
 import functions
+import time
+
+now = time.strftime("%b %d, %Y %H:%M:%S")
+print("It is", now)
 
 while True:
     user_action = input("Type Add, Show, Edit, Complete or Exit: ")
