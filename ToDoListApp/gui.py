@@ -9,8 +9,10 @@ list_box = GUI.Listbox(values=functions.get_tasks(), key='tasks',
 
 edit_button = GUI.Button('Edit')
 
+layout = [[label], [input_box, add_button], [list_box, edit_button]]
+
 window = GUI.Window('My To-Do List App',
-                    layout=[[label], [input_box, add_button], [list_box, edit_button]],
+                    layout=layout,
                     font=('Helvetica', 20))
 while True:
     event, values = window.read()
