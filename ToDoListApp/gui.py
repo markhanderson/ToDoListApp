@@ -8,8 +8,13 @@ list_box = GUI.Listbox(values=functions.get_tasks(), key='tasks',
                        enable_events=True, size=[45, 10])
 
 edit_button = GUI.Button('Edit')
+complete_button = GUI.Button("Complete")
+exit_button = GUI.Button('Exit')
 
-layout = [[label], [input_box, add_button], [list_box, edit_button]]
+layout = [[label],
+          [input_box, add_button],
+          [list_box, edit_button, complete_button],
+          [exit_button]]
 
 window = GUI.Window('My To-Do List App',
                     layout=layout,
@@ -36,6 +41,15 @@ while True:
             tasks[index] = new_task
             functions.write_tasks(tasks)
             window['tasks'].update(values=tasks)
+        case "Complete":
+            tasks_to_complete = values['tasks'][0]
+            tasks = functions.get_tasks()
+            tasks.remove(tasks_to_complete)
+            functions.write_tasks(tasks)
+            window['tasks'].update(values=tasks)
+            window['tasks'].update(value='')
+        case 'Exit':
+            break
         case 'tasks':
             window['task'].update(value=values['tasks'][0])
         case GUI.WIN_CLOSED:
