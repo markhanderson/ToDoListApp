@@ -1,6 +1,4 @@
-Get some beer
-Call Friend
-Pay Car Bill
+Get some winePay Car Bill
 Buy a Camera
 Edit My Contacts
 Make Lunch
@@ -41,3 +39,5 @@ Adopt a Cat
 Adopt a Cat
  from Stacy
 Master Python
+Call The Doctor
+Talk to Sarah and Stacy
