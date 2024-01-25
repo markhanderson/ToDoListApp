@@ -1,7 +1,3 @@
-Get some winePay Car Bill
-Buy a Camera
-Edit My Contacts
-Make Lunch
 Play Football with the Kids
 Wash Car
 Call Family
@@ -41,3 +37,5 @@ Adopt a Cat
 Master Python
 Call The Doctor
 Talk to Sarah and Stacy
+Buy a Birthday Present for Dylan
+Get some wine
