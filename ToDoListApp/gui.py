@@ -1,6 +1,12 @@
+import time
+
 import functions
 import PySimpleGUI as GUI
+import time
 
+GUI.theme("Black")
+
+clock = GUI.Text('', key='clock')
 label = GUI.Text("Type in a Task")
 input_box = GUI.Input(tooltip="Enter Tasks", key="task")
 add_button = GUI.Button('Add')
@@ -12,13 +18,15 @@ exit_button = GUI.Button('Exit')
 
 
 window = GUI.Window('My To-Do List App',
-                    layout=[[label],
+                    layout=[[clock],
+                            [label],
                             [input_box, add_button],
                             [list_box, edit_button, complete_button],
                             [exit_button]],
                     font=('Helvetica', 20))
 while True:
-    event, values = window.read()
+    event, values = window.read(timeout=10)
+    window['clock'].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     print(1, event)
     print(2, values)
     print(3, values['tasks'])
@@ -30,21 +38,27 @@ while True:
             functions.write_tasks(tasks)
             window['tasks'].update(values=tasks)
         case "Edit":
-            task_to_edit = values['tasks'][0]
-            new_task = values['task']
+            try:
+                task_to_edit = values['tasks'][0]
+                new_task = values['task']
 
-            tasks = functions.get_tasks()
-            index = tasks.index(task_to_edit)
-            tasks[index] = new_task
-            functions.write_tasks(tasks)
-            window['tasks'].update(values=tasks)
+                tasks = functions.get_tasks()
+                index = tasks.index(task_to_edit)
+                tasks[index] = new_task
+                functions.write_tasks(tasks)
+                window['tasks'].update(values=tasks)
+            except IndexError:
+                GUI.popup("Please select an item.", font=("Ariel", 20))
         case "Complete":
-            task_to_complete = values['tasks'][0]
-            tasks = functions.get_tasks()
-            tasks.remove(task_to_complete)
-            functions.write_tasks(tasks)
-            window['tasks'].update(values=tasks)
-            window['task'].update(value="")
+            try:
+                task_to_complete = values['tasks'][0]
+                tasks = functions.get_tasks()
+                tasks.remove(task_to_complete)
+                functions.write_tasks(tasks)
+                window['tasks'].update(values=tasks)
+                window['task'].update(value="")
+            except IndexError:
+                GUI.popup("Please select an item.", font=("Ariel", 20))
         case "Exit":
             break
         case 'tasks':
