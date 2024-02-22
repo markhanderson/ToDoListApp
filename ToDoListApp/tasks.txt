@@ -1,15 +1,12 @@
 Play Football with the Kids
-Wash Car
-Call Family
 Get Ready for Interview
-Meet the Teacher
 Take Stephanie to Doctors Appointment
 Go on Date Night with Stephanie
 17 Help Stacy with her Homework
 18 Got To Brewery with David
 19 Schedule Security+ Exam
 20 Schedule Trip to Las Vegas
-Master Python
+Master Java
 Master Python
 Master Python
 Master Python 2
@@ -32,10 +29,12 @@ Take Pictures
 Get some craft beer
 
 Adopt a Cat
-Adopt a Cat
  from Stacy
 Master Python
 Call The Doctor
 Talk to Sarah and Stacy
 Buy a Birthday Present for Dylan
 Get some wine
+Add Task
+Master Java
+Call David and Justin 

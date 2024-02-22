@@ -3,6 +3,11 @@ import time
 import functions
 import PySimpleGUI as GUI
 import time
+import os
+
+if not os.path.exists("tasks.txt"):
+    with open("tasks.txt", "w") as file:
+        pass
 
 GUI.theme("Black")
 
@@ -25,7 +30,7 @@ window = GUI.Window('My To-Do List App',
                             [exit_button]],
                     font=('Helvetica', 20))
 while True:
-    event, values = window.read(timeout=10)
+    event, values = window.read(timeout=1000)
     window['clock'].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     print(1, event)
     print(2, values)
